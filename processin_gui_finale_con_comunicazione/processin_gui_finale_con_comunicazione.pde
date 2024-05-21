@@ -8,8 +8,8 @@ PFont f;
 PFont knobFont;
 PFont font1;
 
-String notearray[] = {"C", "C#", "D","D#", "E", "F","F#", "G", "G#", "A", "A#", "B"};
-String currentNote = "C3";
+String notearray[] = {"C ", "C#", "D ","D#", "E ", "F ","F#", "G ", "G#", "A ", "A#", "B "};
+String currentNote = "C 3";
 
 int valueX, valueY;
 
@@ -108,7 +108,7 @@ void draw() {
   // Disegna il rettangolo
   fill(217,242,216);
   stroke(0);
-  rect(rectX1, rectY1, rectWidth1, rectHeight1);
+  rect(rectX1, rectY1, rectWidth1+25, rectHeight1);
   
 
   // Disegna il testo "Knob"
@@ -119,7 +119,7 @@ void draw() {
    // Disegna il testo 
   fill(0); // Colore del testo 0 = nero 
   textFont(f, 50); // Specifica il font da utilizzare
-  text(currentNote, rectX1+18, rectY1+70); // Disegna il knob
+  text(currentNote, rectX1+12, rectY1+70); // Disegna il knob
   
      // Disegna il testo 
   fill(0); // Colore del testo 0 = nero 
@@ -202,7 +202,7 @@ void oscEvent(OscMessage msg) {
     int val = msg.get(0).intValue();
     int octave = val/12 - 1;
     int note = val % 12;
-    currentNote = notearray[note] + str(val);
+    currentNote = notearray[note] + str(octave);
     
   }
 }
